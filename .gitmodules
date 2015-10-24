@@ -1,0 +1,3 @@
+[submodule "utils"]
+	path = testcart/utils
+	url = https://github.com/josefnpat/pico8utils.git
