@@ -8,6 +8,7 @@ utils/lua2pico.lua:
 	git submodule update
 
 build: utils utils/lua2pico.lua
+	@cp ../ecs.lua src/.
 	@utils/png2pico.lua src/gfx.png src/cart.p8 > .tmp.p8
 	@utils/pack.lua src | utils/lua2pico.lua - .tmp.p8 > src/cart.p8
 	@rm .tmp.p8
