@@ -24,15 +24,6 @@ end
 function ecs.world()
   local world = {}
 
-  local componentsByName = {}
-  function world.component(name)
-    if not componentsByName[name] then
-      componentsByName[name] = componentsByName.size
-    end
-
-    return componentsByName[name]
-  end
-
   local entities = {}
   function world.addEntity(components)
     local id = #entities+1
