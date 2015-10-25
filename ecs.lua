@@ -10,6 +10,17 @@ function containsAll(e, keys)
   return true
 end
 
+function ecs.entitiesWith(entities, componentNames)
+  local results = {}
+  for id,entity in pairs(entities) do
+    if containsAll(entity, componentNames) then
+      results[#results+1] = entity
+    end
+  end
+
+  return results
+end
+
 function ecs.world()
   local world = {}
 
@@ -28,17 +39,6 @@ function ecs.world()
     entities[id] = components
     
     return id
-  end
-
-  function world.entitiesWith(componentNames)
-    local results = {}
-    for id,entity in pairs(entities) do
-      if containsAll(entity, componentNames) then
-        results[#results+1] = entity
-      end
-    end
-
-    return results
   end
 
   function world.invoke(funcs)
